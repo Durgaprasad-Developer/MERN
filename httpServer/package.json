@@ -1,0 +1,12 @@
+{
+  "name": "httpserver",
+  "version": "1.0.0",
+  "description": "test ",
+  "license": "ISC",
+  "author": "B Durga prasad Reddy",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
