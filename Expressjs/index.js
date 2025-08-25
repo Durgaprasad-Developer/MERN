@@ -2,6 +2,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
+
 // Create
 app.get('/', (req,res)=>{
     res.send("Welcome to my server")
@@ -19,7 +21,7 @@ const courses = [
 //get all courses
 app.get('/courses', (req, res)=>{
     console.log(req);
-    res.send(courses.params);
+    res.status(200).send(courses);
 })
 
 // to get a single course based on id
@@ -27,16 +29,30 @@ app.get('/courses/:id', (req, res)=>{
     const course = courses.find(c => c.courseid === parseInt(req.params.id));
     if(!course) return res.status(404).send('The course with the given ID was not found');
     console.log(req.params);
-    res.send(course);
+    res.status(200).send(course);
 })
 
 // Read
 // app.read()
 
 // Update
-// app.put()
+app.post('/courses', (req, res)=>{
+    let course = {
+        courseid: req.body.courseid,
+        name: req.body.name,
+        instructor: req.body.instructor
+    }
+    courses.push(course);
+    res.status(201).send('Course added successfully')
+})
 
-// app.patch()
+// to update a course
+app.put('/courses/:id', (req, res)=>{
+    let course = courses.find((course)=> course.courseid === parseInt(req.params.id));
+    if(!course) return res.status(404).send('The course with the given ID was not found');
+    course.instructor = req.body.instructor;
+    res.status(200).send(course);
+})
 
 // Delete
 // app.delete()
