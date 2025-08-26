@@ -38,7 +38,7 @@ let courseSchema = new mongoose.Schema({
 
 const CourseModel = mongoose.model('courses',courseSchema);
 
-
+// get
 app.get("/", (req, res) => {
   res.send("Message From Server"); 
 });
@@ -60,6 +60,7 @@ app.get("/courses/:_id", async(req,res)=>{
     }
 })
 
+// post
 app.post('/courses', async(req, res)=>{
     try{
         let course = await CourseModel.create({
@@ -75,6 +76,7 @@ app.post('/courses', async(req, res)=>{
     
 })
 
+// put
 app.put('/courses/:_id', async(req, res)=>{
     try{
         const courseid = req.params._id;
@@ -91,6 +93,7 @@ app.put('/courses/:_id', async(req, res)=>{
     }
 })
 
+// delete
 app.delete('/courses/:_id', async(req, res)=>{
     try{
         const courseid = req.params._id;
