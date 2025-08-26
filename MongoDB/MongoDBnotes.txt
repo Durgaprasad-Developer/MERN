@@ -1,0 +1,14 @@
+---NoSQL (not only SQL)
+-Document Based Databases (BSON)
+-Key-value pairs
+-Graph Databases (neo4j, neo4jplayground)
+-Wide column DBs
+-Vector Database
+
+---MongoDB
+--MongoDB Atlas
+--MongoDb Community
+--MongoDB compass
+
+---MongoDB Atlas 
+--connection
