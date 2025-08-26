@@ -40,7 +40,7 @@ const CourseModel = mongoose.model('courses',courseSchema);
 
 
 app.get("/", (req, res) => {
-  res.send("Message From Server");
+  res.send("Message From Server"); 
 });
 app.get("/courses", async(req, res)=>{
     try{
@@ -73,6 +73,35 @@ app.post('/courses', async(req, res)=>{
         res.status(400).send(err.message)
     }
     
+})
+
+app.put('/courses/:_id', async(req, res)=>{
+    try{
+        const courseid = req.params._id;
+        const instructorname = req.body.instructor;
+        const course = await CourseModel.findByIdAndUpdate(
+            courseid,
+            {instructor: instructorname},
+            {new:true}
+        )
+        if(!course) return res.status(404).send('courseid not found')
+            res.status(200).send(course);
+    }catch(err){
+        res.status(500).send(err.message);
+    }
+})
+
+app.delete('/courses/:_id', async(req, res)=>{
+    try{
+        const courseid = req.params._id;
+        const course = await CourseModel.findByIdAndDelete(
+            courseid
+        )
+        if(!course) return res.status(404).send('courseid not found');
+        res.send(await CourseModel.find())
+    }catch(err){
+        res.status(500).send(err.message);
+    }
 })
 
 app.listen(8801, () => {
