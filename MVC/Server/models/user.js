@@ -14,20 +14,14 @@ const ProductSchema = new mongoose.Schema({
     },
 
     password: {
-        type:text,
+        type:String,
         required: true
     },
-    product_price: {
-        type:Number,
-        required:true
-    },
-
-    isInStock : {
-        type: Boolean,
-        required:true
+    phone: {
+        type:Number
     }
 })
 
-const UserModel = mongoose.model('products', ProductSchema)
+const UserModel = mongoose.model('users', ProductSchema)
 
 module.exports = UserModel

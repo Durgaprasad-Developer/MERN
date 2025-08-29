@@ -12,6 +12,7 @@ app.use(express.json())
 connectDB(process.env.dbUrl)
 
 app.use('/products', productRoutes)
+app.use('/users',userRoutes)
 
 
 app.get('/', (req, res)=>{

@@ -1,6 +1,6 @@
-const ProductModel = require("@models/product.js")
+// const ProductModel = require("@models/product.js")
 const express = require('express')
-const {getAllProduct, updateProduct, deleteProduct, InsertManyProduct, deleteManyProduct,getByProductId} = require('../controllers/productControllers.js')
+const {getAllProduct, updateProduct, deleteProduct, InsertManyProduct, deleteManyProduct,getByProductId} = require('@controllers/productControllers.js')
 
 const router = express.Router()
 
