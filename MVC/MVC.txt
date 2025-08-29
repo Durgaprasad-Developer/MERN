@@ -7,3 +7,5 @@ Learnt how we can create different components like
 - learnt how to store our apis and passwords in .env
 - aditionally learnt about
 -- inserting multiple products with insertMany method, inserting partial data by adding {orderd:false} and removing required
+
+-Learnt about modules-alias

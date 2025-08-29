@@ -1,4 +1,5 @@
 const express = require("express")
+require("module-alias/register")
 require('dotenv').config()
 const {connectDB} = require("./dbConfig")
 const productRoutes = require("./routes/productRoutes.js")

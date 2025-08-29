@@ -1,4 +1,4 @@
-const ProductModel = require('../models/product.js')
+const ProductModel = require('@models/product.js')
 
 // get All Products
 
@@ -9,6 +9,19 @@ exports.getAllProduct = async(req, res)=>{
       res.status(200).send(product)
   }catch(err){
     res.status(500).send(err.message);
+  }
+}
+
+// get by Ids
+
+exports.getByProductId = async(req,res)=>{
+  try{
+    const productId = req.params._id;
+    let product = await ProductModel.findById(productId);
+    if(!product) return res.status(404).send("invalid id")
+      res.status(200).send(product)
+  }catch(err){
+    res.status(500).send(err.message)
   }
 }
 
@@ -59,8 +72,19 @@ exports.deleteProduct = async(req, res)=>{
       const productId = req.params._id;
       const product = await ProductModel.findByIdAndDelete(productId);
       if(!product) return res.status(404).send("invalid id")
-        res.send(ProductModel.find());
+        res.status(200).send(await ProductModel.find());
     }catch(err){
       res.status(500).send(err.send);
     }
+}
+
+exports.deleteManyProduct = async (req,res) => {
+  try{
+    const productId = req.params._id.split(",");
+    const product = await ProductModel.deleteMany({_id: {$in: productId}})
+    if(!product) return res.status(404).send("please check the ids")
+      res.status(200).send(await ProductModel.find());
+  }catch(err){
+    res.status(500).send(err.message)
+  }
 }
