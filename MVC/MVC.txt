@@ -1,0 +1,9 @@
+Learnt about MVC
+
+Learnt how we can create different components like 
+- controllers: to store all the controllers
+- Models to store schema and create a Models
+- routes to route the controllers with a path and use REST APIS
+- learnt how to store our apis and passwords in .env
+- aditionally learnt about
+-- inserting multiple products with insertMany method, inserting partial data by adding {orderd:false} and removing required
